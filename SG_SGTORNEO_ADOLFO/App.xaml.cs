@@ -1,15 +1,14 @@
-﻿namespace SG_SGTORNEO_ADOLFO
+﻿using SG_SGTORNEO_ADOLFO.MVVM.Views;
+
+namespace SG_SGTORNEO_ADOLFO
 {
     public partial class App : Application
     {
         public App()
         {
             InitializeComponent();
+            MainPage = new NavigationPage(new LoginView());
         }
 
-        protected override Window CreateWindow(IActivationState? activationState)
-        {
-            return new Window(new AppShell());
-        }
     }
 }
