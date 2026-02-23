@@ -9,4 +9,8 @@ public partial class LoginView : ContentPage
 		InitializeComponent();
 		BindingContext = new LoginViewModel();
     }
+	private void Entry_TextChanged(object sender, TextChangedEventArgs e)
+	{
+		((LoginViewModel)BindingContext).NotificarCambio();
+    }
 }
