@@ -70,10 +70,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Converters\" />
-	</ItemGroup>
-
-	<ItemGroup>
 	  <MauiXaml Update="MVVM\Views\EditarPartidoView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
