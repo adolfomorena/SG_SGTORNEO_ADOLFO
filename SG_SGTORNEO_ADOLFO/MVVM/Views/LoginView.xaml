@@ -12,6 +12,6 @@
                TextChanged="Entry_TextChanged"/>
         <Button Text="Entrar"
                 Command="{Binding LoginCommand}"
-                Style="{StaticResource BotonPrincipal}"/>
+                />
     </VerticalStackLayout>
 </ContentPage>
