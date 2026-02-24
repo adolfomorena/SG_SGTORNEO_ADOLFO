@@ -103,5 +103,15 @@ namespace SG_SGTORNEO_ADOLFO.MVVM.ViewModels
         {
             await App.Current.MainPage.Navigation.PushAsync(new EquiposView());
         }
+
+        public void CargarEquipos()
+        {
+            var equipos = App.EquiposRepo.GetItems();
+            Equipos.Clear();
+            foreach (var e in equipos)
+            {
+                Equipos.Add(e);
+            }
+        }
     }
 }
