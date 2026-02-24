@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SG_SGTORNEO_ADOLFO.MVVM.Views.LoginView">
+    <VerticalStackLayout Padding="30" Spacing="20" VerticalOptions="Center">
+        <Entry Placeholder="Usuario"
+               Text="{Binding Usuario}"
+               TextChanged="Entry_TextChanged"/>
+        <Entry Placeholder="Contraseña"
+               Text="{Binding Contraseña}"
+               IsPassword="True"
+               TextChanged="Entry_TextChanged"/>
+        <Button Text="Entrar"
+                Command="{Binding LoginCommand}"
+                />
+    </VerticalStackLayout>
+</ContentPage>

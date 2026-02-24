@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:SG_SGTORNEO_ADOLFO.MVVM.Views"
+             x:Class="SG_SGTORNEO_ADOLFO.MVVM.Views.PartidosView">
+    <Grid>
+        <!-- Carga incremental: cuando el usuario se acerca al final de la lista,
+        se ejecuta el comando para cargar más partidos (paginación 8 en 8). -->
+        <CollectionView
+            ItemsSource="{Binding Partidos}"
+            RemainingItemsThreshold="1"
+            RemainingItemsThresholdReachedCommand="{Binding CargarMasCommand}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Padding="10" ColumnDefinitions="*, Auto" RowDefinitions="Auto,Auto">
+                        <VerticalStackLayout Grid.Column="0" Spacing="4">
+                            <Label Text="{Binding EquipoLocal.Nombre}"/>
+                            <Label Text="{Binding EquipoVisitante.Nombre}"/>
+
+                            <HorizontalStackLayout Spacing="10">
+                                <Label Text="{Binding GolesLocal}"/>
+                                <Label Text=" - "/>
+                                <Label Text="{Binding GolesVisitante}"/>
+                            </HorizontalStackLayout>
+                        </VerticalStackLayout>
+
+                        <!--Al estar en el ItemTemplate el BindingContext es el elemento de la lista, por eso
+                        le decimos que busque el BindingContext de la Vista de Partidos-->
+                        <Button Grid.Column="1" Text="Editar"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type local:PartidosView}},
+                                    Path=BindingContext.EditarPartidoCommand}"
+                                CommandParameter="{Binding .}"/>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        
+        <!--Boton flotante-->
+        <Button Text="+"
+                Command="{Binding NuevoPartidoCommand}"
+                CornerRadius="30"
+                WidthRequest="60"
+                HeightRequest="60"
+                BackgroundColor="DodgerBlue"
+                TextColor="White"
+                VerticalOptions="End"
+                HorizontalOptions="End"
+                Margin="20"/>
+    </Grid>
+</ContentPage>
