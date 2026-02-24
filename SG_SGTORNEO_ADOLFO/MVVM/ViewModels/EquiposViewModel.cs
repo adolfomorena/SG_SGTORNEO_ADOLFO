@@ -29,14 +29,14 @@ namespace SG_SGTORNEO_ADOLFO.MVVM.ViewModels
             EliminarEquipoCommand = new Command<Equipo>(EliminarEquipo);
         }
 
-        private void NuevoEquipo()
+        private async void NuevoEquipo()
         {
-            App.Current.MainPage.Navigation.PushAsync(new EditarEquipoView());
+            await App.Current.MainPage.Navigation.PushAsync(new EditarEquipoView());
         }
 
-        private void EditarEquipo(Equipo equipo)
+        private async void EditarEquipo(Equipo equipo)
         {
-            App.Current.MainPage.Navigation.PushAsync(new EditarEquipoView(equipo));
+            await App.Current.MainPage.Navigation.PushAsync(new EditarEquipoView(equipo));
         }
 
         private void EliminarEquipo(Equipo equipo)
