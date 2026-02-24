@@ -27,6 +27,7 @@ namespace SG_SGTORNEO_ADOLFO.MVVM.ViewModels
 
         public ICommand GuardarCommad { get; set; }
         public ICommand CancelarCommand { get; set; }
+        public ICommand GestionarEquiposCommand { get; set; }
 
         public EditarPartidoViewModel(Partido partido = null)
         {
@@ -44,6 +45,7 @@ namespace SG_SGTORNEO_ADOLFO.MVVM.ViewModels
 
             GuardarCommad = new Command(Guardar, PuedeGuardar);
             CancelarCommand = new Command(Cancelar);
+            GestionarEquiposCommand = new Command(GestionarEquipos);
         }
 
         private bool PuedeGuardar()

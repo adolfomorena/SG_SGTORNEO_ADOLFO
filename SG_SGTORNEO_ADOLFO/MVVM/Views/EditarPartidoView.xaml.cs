@@ -10,4 +10,19 @@ public partial class EditarPartidoView : ContentPage
 		InitializeComponent();
 		BindingContext = new EditarPartidoViewModel(partido);
     }
+
+    private void Picker_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        ((EditarPartidoViewModel)BindingContext).NotificarCambio();
+    }
+
+    private void Picker_SelectedIndexChanged_1(object sender, EventArgs e)
+    {
+
+    }
+
+    private void Stepper_ValueChanged(object sender, ValueChangedEventArgs e)
+    {
+        ((EditarPartidoViewModel)BindingContext).NotificarCambio();
+    }
 }

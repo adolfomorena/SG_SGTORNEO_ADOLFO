@@ -7,22 +7,27 @@
             <Picker Title="Equipo Local"
                     ItemsSource="{Binding Equipos}"
                     ItemDisplayBinding="{Binding Nombre}"
-                    SelectedItem="{Binding EquipoLocalSelec}"/>
+                    SelectedItem="{Binding EquipoLocalSelec}"
+                    SelectedIndexChanged="Picker_SelectedIndexChanged"/>
             <Picker Title="Equipo Visitante"
                     ItemsSource="{Binding Equipos}"
                     ItemDisplayBinding="{Binding Nombre}"
-                    SelectedItem="{Binding EquipoVisitanteSelec}"/>
+                    SelectedItem="{Binding EquipoVisitanteSelec}"
+                    SelectedIndexChanged="Picker_SelectedIndexChanged"/>
             
-            <DatePicker Date="{Binding Fecha}"/>
+            <DatePicker Date="{Binding Fecha}"
+                        DateSelected="Picker_SelectedIndexChanged"/>
             
             <HorizontalStackLayout Spacing="20">
                 <Label Text="Goles Local"/>
-                <Stepper Minimum="0" Maximum="20" Value="{Binding GolesLocal}"/>
-                <Label Text="{Binding GolesLocal}"/>
-            </HorizontalStackLayout>
-            <HorizontalStackLayout Spacing="20">
+                <Stepper Minimum="0" Maximum="20" 
+                         Value="{Binding GolesLocal}"
+                         ValueChanged="Stepper_ValueChanged"/>
+                <HorizontalStackLayout Spacing="20">
                 <Label Text="Goles Visitante"/>
-                <Stepper Minimum="0" Maximum="20" Value="{Binding GolesVisitante}"/>
+                <Stepper Minimum="0" Maximum="20" 
+                         Value="{Binding GolesVisitante}"
+                         ValueChanged="Stepper_ValueChanged"/>
                 <Label Text="{Binding GolesVisitante}"/>
             </HorizontalStackLayout>
             
@@ -30,6 +35,8 @@
                     Command="{Binding GuardarCommand}"/>
             <Button Text="Cancelar"
                     Command="{Binding CancelarCommand}"/>
+            <Button Text="Gestionar Equipos"
+                    Command="{Binding GestionarEquiposCommand}"/>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>
