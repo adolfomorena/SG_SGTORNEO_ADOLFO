@@ -25,7 +25,7 @@ namespace SG_SGTORNEO_ADOLFO.MVVM.ViewModels
 
         public Partido PartidoActual { get; set; }
 
-        public ICommand GuardarCommad { get; set; }
+        public ICommand GuardarCommand { get; set; }
         public ICommand CancelarCommand { get; set; }
         public ICommand GestionarEquiposCommand { get; set; }
 
@@ -43,7 +43,7 @@ namespace SG_SGTORNEO_ADOLFO.MVVM.ViewModels
                 GolesVisitante = partido.GolesVisitante;
             }
 
-            GuardarCommad = new Command(Guardar, PuedeGuardar);
+            GuardarCommand = new Command(Guardar, PuedeGuardar);
             CancelarCommand = new Command(Cancelar);
             GestionarEquiposCommand = new Command(GestionarEquipos);
         }
@@ -73,7 +73,7 @@ namespace SG_SGTORNEO_ADOLFO.MVVM.ViewModels
 
         public void NotificarCambio()
         {
-            ((Command)GuardarCommad).ChangeCanExecute();
+            ((Command)GuardarCommand).ChangeCanExecute();
         }
 
         private async void Guardar()
@@ -102,6 +102,16 @@ namespace SG_SGTORNEO_ADOLFO.MVVM.ViewModels
         private async void GestionarEquipos()
         {
             await App.Current.MainPage.Navigation.PushAsync(new EquiposView());
+        }
+
+        public void CargarEquipos()
+        {
+            var equipos = App.EquiposRepo.GetItems();
+            Equipos.Clear();
+            foreach (var e in equipos)
+            {
+                Equipos.Add(e);
+            }
         }
     }
 }

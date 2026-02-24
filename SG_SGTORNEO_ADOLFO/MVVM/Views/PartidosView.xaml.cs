@@ -9,4 +9,12 @@ public partial class PartidosView : ContentPage
 		InitializeComponent();
 		BindingContext = new PartidosViewModel();
     }
+
+	protected override void OnAppearing()
+	{
+		base.OnAppearing();
+
+		var vm = (PartidosViewModel)BindingContext;
+		vm.CargarPartidos();
+    }
 }

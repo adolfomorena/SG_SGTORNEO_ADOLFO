@@ -29,18 +29,30 @@ namespace SG_SGTORNEO_ADOLFO.MVVM.ViewModels
             EliminarEquipoCommand = new Command<Equipo>(EliminarEquipo);
         }
 
-        private void NuevoEquipo()
+        private async void NuevoEquipo()
         {
-            App.Current.MainPage.Navigation.PushAsync(new EditarEquipoView());
+            await App.Current.MainPage.Navigation.PushAsync(new EditarEquipoView());
         }
 
-        private void EditarEquipo(Equipo equipo)
+        private async void EditarEquipo(Equipo equipo)
         {
-            App.Current.MainPage.Navigation.PushAsync(new EditarEquipoView(equipo));
+            await App.Current.MainPage.Navigation.PushAsync(new EditarEquipoView(equipo));
         }
 
-        private void EliminarEquipo(Equipo equipo)
+        private async void EliminarEquipo(Equipo equipo)
         {
+            //comprueba si el equipo aparece en algun partidoo
+            var partidos = App.PartidosRepo.GetItems();
+
+            bool tienePartidos = partidos.Any(p => p.EquipoLocalId == equipo.Id || p.EquipoVisitanteId == equipo.Id);
+            if (tienePartidos)
+            {
+                await App.Current.MainPage.DisplayAlert("Error",
+                    "No se puede eliminar el equipo porque tiene partidos asociados.",
+                    "OK");
+                return;
+            }
+
             App.EquiposRepo.DeleteItem(equipo);
             Equipos.Remove(equipo);
         }

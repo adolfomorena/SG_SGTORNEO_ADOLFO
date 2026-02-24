@@ -39,16 +39,32 @@ namespace SG_SGTORNEO_ADOLFO.MVVM.ViewModels
             foreach (var p in partidos)
             {
                 Partidos.Add(p);
-                cargados += cantidad;
             }
+            cargados += cantidad;
         }
-        private void NuevoPartido()
+        private async void NuevoPartido()
         {
-            App.Current.MainPage.Navigation.PushAsync(new EditarPartidoView());
+            await App.Current.MainPage.Navigation.PushAsync(new EditarPartidoView());
+
+
         }
-        private void EditarPartido(Partido partido)
+        private async void EditarPartido(Partido partido)
         {
-            App.Current.MainPage.Navigation.PushAsync(new EditarPartidoView(partido));
+            await App.Current.MainPage.Navigation.PushAsync(new EditarPartidoView(partido));
+        }
+
+        public void CargarPartidos()
+        {
+            Partidos.Clear();
+
+            var lista = App.PartidosRepo.GetItems();
+
+            foreach (var p in lista)
+            {
+                p.EquipoLocal = App.EquiposRepo.GetItem(p.EquipoLocalId);
+                p.EquipoVisitante = App.EquiposRepo.GetItem(p.EquipoVisitanteId);
+                Partidos.Add(p);
+            }
         }
     }
 }

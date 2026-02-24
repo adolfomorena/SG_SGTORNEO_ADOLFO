@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace SG_SGTORNEO_ADOLFO.MVVM.Models
 {
     [AddINotifyPropertyChangedInterface]
-    [Table("Equipos")]
+    [Table("Partidos")]
     public class Partido : TableData
     {
         [ForeignKey(typeof(Equipo))]

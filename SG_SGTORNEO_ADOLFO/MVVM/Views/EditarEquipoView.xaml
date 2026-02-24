@@ -1,15 +1,27 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="SG_SGTORNEO_ADOLFO.MVVM.Views.EditarEquipoView"
-             Title="EditarEquipoView">
+             xmlns:conv="clr-namespace:SG_SGTORNEO_ADOLFO.Converters"
+             x:Class="SG_SGTORNEO_ADOLFO.MVVM.Views.EditarEquipoView">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <conv:ByteArray2ImageConverter x:Key="ImgConverter"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
     <VerticalStackLayout Padding="20" Spacing="20">
+        <Image Source="{Binding Escudo, Converter={StaticResource ImgConverter}}"
+               HeightRequest="150"
+               WidthRequest="150"
+               Aspect="AspectFit"/>
+        <Button Text="Seleccionar Imagen"
+                Command="{Binding SeleccionarImagenCommand}"/>
         <Entry Placeholder="Nombre del equipo"
                Text="{Binding Nombre}"
                TextChanged="Entry_TextChanged"/>
         <Button Text="Guardar"
                 Command="{Binding GuardarCommand}"/>
-        <Button Text="Cancelar"
+        <Button Text="Volver"
                 Command="{Binding CancelarCommand}"/>
     </VerticalStackLayout>
 </ContentPage>

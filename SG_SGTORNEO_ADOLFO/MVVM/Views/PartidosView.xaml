@@ -27,8 +27,8 @@
                         <!--Al estar en el ItemTemplate el BindingContext es el elemento de la lista, por eso
                         le decimos que busque el BindingContext de la Vista de Partidos-->
                         <Button Grid.Column="1" Text="Editar"
-                                Command="{Binding BindingContext.EditarPartidoCommand,
-                                        Source={RelativeSource AncestorType={x:Type local:PartidosView}}}"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type local:PartidosView}},
+                                    Path=BindingContext.EditarPartidoCommand}"
                                 CommandParameter="{Binding .}"/>
                     </Grid>
                 </DataTemplate>

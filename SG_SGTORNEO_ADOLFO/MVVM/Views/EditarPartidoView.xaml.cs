@@ -30,4 +30,11 @@ public partial class EditarPartidoView : ContentPage
     {
 
     }
+
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+        var vm = (EditarPartidoViewModel)BindingContext;
+        vm.CargarEquipos();
+    }
 }
