@@ -70,6 +70,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="MVVM\Views\EditarEquipoView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="MVVM\Views\EditarPartidoView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

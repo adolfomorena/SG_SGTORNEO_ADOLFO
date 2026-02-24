@@ -9,4 +9,12 @@ public partial class EquiposView : ContentPage
 		InitializeComponent();
 		BindingContext = new EquiposViewModel();
     }
+
+	protected override void OnAppearing()
+	{
+		base.OnAppearing();
+
+		var vm = (EquiposViewModel)BindingContext;
+		vm.CargarEquipos();
+    }
 }
