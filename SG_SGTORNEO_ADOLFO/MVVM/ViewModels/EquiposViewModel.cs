@@ -44,5 +44,15 @@ namespace SG_SGTORNEO_ADOLFO.MVVM.ViewModels
             App.EquiposRepo.DeleteItem(equipo);
             Equipos.Remove(equipo);
         }
+
+        public void CargarEquipos()
+        {
+            var equipos = App.EquiposRepo.GetItems();
+            Equipos.Clear();
+            foreach (var e in equipos)
+            {
+                Equipos.Add(e);
+            }
+        }
     }
 }
