@@ -26,7 +26,7 @@ namespace SG_SGTORNEO_ADOLFO.MVVM.ViewModels
         {
             CargarMasCommand = new Command(CargarMas);
             NuevoPartidoCommand = new Command(NuevoPartido);
-            EditarPartidoCommand = new Command(EditarPartido);
+            EditarPartidoCommand = new Command<Partido>(EditarPartido);
 
             //cargamos los 8 primeros
             CargarMas();

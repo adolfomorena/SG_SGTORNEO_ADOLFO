@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:SG_SGTORNEO_ADOLFO.MVVM.Views"
              x:Class="SG_SGTORNEO_ADOLFO.MVVM.Views.PartidosView">
     <Grid>
         <!-- Carga incremental: cuando el usuario se acerca al final de la lista,
         se ejecuta el comando para cargar más partidos (paginación 8 en 8). -->
         <CollectionView
-            ItemSource="{Binding Partidos}"
+            ItemsSource="{Binding Partidos}"
             RemainingItemsThreshold="1"
             RemainingItemsThresholdReachedCommand="{Binding CargarMasCommand}">
             <CollectionView.ItemTemplate>
@@ -27,7 +28,7 @@
                         le decimos que busque el BindingContext de la Vista de Partidos-->
                         <Button Grid.Column="1" Text="Editar"
                                 Command="{Binding BindingContext.EditarPartidoCommand,
-                                        Source={RelativeSource AncestorType={x:Type PartidosView}}}"
+                                        Source={RelativeSource AncestorType={x:Type local:PartidosView}}}"
                                 CommandParameter="{Binding .}"/>
                     </Grid>
                 </DataTemplate>
