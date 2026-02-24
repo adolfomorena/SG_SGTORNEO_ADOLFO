@@ -13,10 +13,12 @@ namespace SG_SGTORNEO_ADOLFO.MVVM.ViewModels
     public class EditarEquipoViewModel
     {
         public string Nombre { get; set; }
+        public byte[] Escudo { get; set; }
         public Equipo EquipoActual { get; set; }
 
         public ICommand GuardarCommand { get; set; }
         public ICommand CancelarCommand { get; set; }
+        public ICommand SeleccionarImagenCommand { get; set; }
 
         public EditarEquipoViewModel(Equipo equipo = null)
         {
@@ -24,10 +26,12 @@ namespace SG_SGTORNEO_ADOLFO.MVVM.ViewModels
             if (equipo != null)
             {
                 Nombre = equipo.Nombre;
+                Escudo = equipo.Escudo;
             }
 
             GuardarCommand = new Command(Guardar, PuedeGuardar);
             CancelarCommand = new Command(Cancelar);
+            SeleccionarImagenCommand = new Command(SeleccionarImagen);
         }
 
         private bool PuedeGuardar()
@@ -50,6 +54,7 @@ namespace SG_SGTORNEO_ADOLFO.MVVM.ViewModels
                 EquipoActual = new Equipo();
             }
             EquipoActual.Nombre = Nombre;
+            EquipoActual.Escudo = Escudo;
 
             App.EquiposRepo.SaveItem(EquipoActual);
 
@@ -59,6 +64,21 @@ namespace SG_SGTORNEO_ADOLFO.MVVM.ViewModels
         private async void Cancelar()
         {
             await App.Current.MainPage.Navigation.PopAsync();
+        }
+
+        private async void SeleccionarImagen()
+        {
+            var result = await FilePicker.PickAsync(new PickOptions
+            {
+                PickerTitle = "Seleccionar imagen como escudo"
+            });
+            if (result != null)
+            {
+                using var stream = await result.OpenReadAsync();
+                using var memoryStream = new MemoryStream();
+                await stream.CopyToAsync(memoryStream);
+                Escudo = memoryStream.ToArray();
+            }
         }
     }
 }
