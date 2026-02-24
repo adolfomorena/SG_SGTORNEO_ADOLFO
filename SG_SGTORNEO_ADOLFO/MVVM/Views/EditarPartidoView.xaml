@@ -23,9 +23,11 @@
                 <Stepper Minimum="0" Maximum="20" 
                          Value="{Binding GolesLocal}"
                          ValueChanged="Stepper_ValueChanged"/>
-                <HorizontalStackLayout Spacing="20">
+                <Label Text="{Binding GolesLocal}"/>
+            </HorizontalStackLayout>
+            <HorizontalStackLayout Spacing="20">
                 <Label Text="Goles Visitante"/>
-                <Stepper Minimum="0" Maximum="20" 
+                <Stepper Minimum="0" Maximum="20"
                          Value="{Binding GolesVisitante}"
                          ValueChanged="Stepper_ValueChanged"/>
                 <Label Text="{Binding GolesVisitante}"/>

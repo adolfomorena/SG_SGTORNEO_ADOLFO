@@ -71,6 +71,10 @@ namespace SG_SGTORNEO_ADOLFO.MVVM.ViewModels
             return true;
         }
 
+        public void NotificarCambio()
+        {
+            ((Command)GuardarCommad).ChangeCanExecute();
+        }
 
         private async void Guardar()
         {

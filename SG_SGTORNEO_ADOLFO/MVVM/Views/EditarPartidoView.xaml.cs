@@ -25,4 +25,9 @@ public partial class EditarPartidoView : ContentPage
     {
         ((EditarPartidoViewModel)BindingContext).NotificarCambio();
     }
+
+    private void Stepper_ValueChanged_1(object sender, ValueChangedEventArgs e)
+    {
+
+    }
 }
