@@ -14,12 +14,12 @@
                             <Label Text="{Binding Nombre}" FontAttributes="Bold" FontSize="18"/>
                             <HorizontalStackLayout Spacing="10">
                                 <Button Text="Editar"
-                                        Command="{Binding BindingContext.EditarEquipoCommand}, 
-                                                Source={RelativeSource AncestorType={x:Type local:EquiposView}}"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type local:EquiposView}},
+                                        Path=BindingContext.EditarEquipoCommand}"
                                         CommandParameter="{Binding .}"/>
                                 <Button Text="Eliminar"
-                                        Command="{Binding BindingContext.EliminarEquipoCommand}, 
-                                                Source={RelativeSource AncestorType={x:Type local:EquiposView}}"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type local:EquiposView}},
+                                        Path=BindingContext.EliminarEquipoCommand}"
                                         CommandParameter="{Binding .}"/>
                             </HorizontalStackLayout>
                         </VerticalStackLayout>
