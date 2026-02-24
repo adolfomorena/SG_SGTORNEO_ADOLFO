@@ -8,7 +8,7 @@
                TextChanged="Entry_TextChanged"/>
         <Button Text="Guardar"
                 Command="{Binding GuardarCommand}"/>
-        <Button Text="Cancelar"
+        <Button Text="Volver"
                 Command="{Binding CancelarCommand}"/>
     </VerticalStackLayout>
 </ContentPage>
